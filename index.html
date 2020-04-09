@@ -1,7 +1,6 @@
 <html>
 <head>
   <meta charset="UTF-8">
-
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <title>Code Challenge</title>
   <style>
@@ -11,20 +10,22 @@
     textarea {
       width: 100%;
     }
+    li {
+      cursor: pointer;
+    }
+    li:hover{
+      background-color: rgba(255, 253, 143, 0.719);
+    }
   </style>
 </head>
 <body>
   <div class='row'>
-
     <div class='col-md-4'>
-      <ul class="list-group" id="list-group">
-      </ul>
+      <ul class="list-group" id="list-group"></ul>
     </div>
-
     <div class='col-md-8'>
       <h2>Beer Detail</h2>
-      <div id="beer-detail">
-      </div>
+      <div id="beer-detail"></div>
     </div>
   </div>
   <script src="src/index.js"></script>
