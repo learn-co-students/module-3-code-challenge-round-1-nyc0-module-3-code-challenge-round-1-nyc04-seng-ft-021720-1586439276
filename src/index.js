@@ -13,6 +13,26 @@ document.addEventListener('DOMContentLoaded', function(){
 		.then(response => response.json())
 		.then(addArrayOfBeersToList);
 
+	// listen for clicks on the beer list
+	listContainer.addEventListener('click', event => {
+		if (event.target.className === 'list-group-item'){
+			loadBeerDetail(event.target.dataset.id);
+		}
+	});
+
+	// listen for clicks on the save button
+	detailContainer.addEventListener('click', event =>{
+		if (event.target.id === 'edit-beer'){
+			updateBeerDescription(event.target.dataset.id);
+		}
+	});
+
+	// BONUS: disable save button until edited
+
+	// BONUS: listen for .blur on the textarea
+
+	// BONUS: save the textarea after 2 seconds if edited
+
 });
 
 function addBeerToList(beer){
@@ -21,8 +41,7 @@ function addBeerToList(beer){
 
 	const newBeer = document.createElement('li');
 	newBeer.className = 'list-group-item';
-	// refactor this into a delegated event listener
-	newBeer.onclick = function(){loadBeerDetail(beer.id);}
+	newBeer.dataset.id = beer.id;
 	newBeer.append(beer.name);
 	listContainer.append(newBeer);
 }
@@ -56,7 +75,7 @@ function loadBeerDetail(beerId){
 			const saveButtonEl = document.createElement('button');
 			saveButtonEl.id = 'edit-beer';
 			saveButtonEl.className = 'btn btn-info';
-			saveButtonEl.onclick = function(){ updateBeerDescription(beer.id); };
+			saveButtonEl.dataset.id = beer.id;
 			saveButtonEl.append('Save');
 
 			beerDetailContent = [nameEl, imageEl, taglineEl, descriptionFieldEl, saveButtonEl];
@@ -75,6 +94,9 @@ function removeAllContentFromElement(element){
 }
 
 function updateBeerDescription(beerId){
+
+	console.log('saving...');
+
 	const descriptionField = document.querySelector('textarea');
 	const newDescription = descriptionField.value;
 	
@@ -89,7 +111,7 @@ function updateBeerDescription(beerId){
 	})
 		.then(response => {
 			if (response.ok) {
-				// nothing, the DOM is already good-to-go
+				console.log('saved.');
 			}
 		})
 }
