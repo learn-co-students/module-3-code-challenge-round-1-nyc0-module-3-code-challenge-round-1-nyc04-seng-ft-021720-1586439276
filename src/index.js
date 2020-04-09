@@ -33,34 +33,37 @@ beerDetail.innerHTML = `
 <h1>${beer.name}</h1>
 <img src=${beer.image_url}>
 <h3>${beer.tagline}</h3>
-<textarea name="description">${beer.description}</textarea>
+<textarea id="description">${beer.description}</textarea>
 <button id="edit-beer" class="btn btn-info">
   Save
 </button>
 `
 
 
+
 const saveBtn = beerDetail.querySelector("#edit-beer")
-
-saveBtn.addEventListener('submit', e => {
+saveBtn.addEventListener('click', e => {
     e.preventDefault
-
-    const newDescription = {
-        description: e.target.description.value
-    }
-
-    fetch("http://localhost:3000/beers/:id"), {
+   console.log(e.target)
+   const D = document.querySelector("#description")
+        console.log(D.value)
+    const beerId = beer.id
+    console.log(beer.id)
+        const newDescription = D.value
+    fetch(`http://localhost:3000/beers/${beer.id}`, {
         method: "PATCH",
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           },
         body: JSON.stringify({description: newDescription})
-        
      }
-  
+    )
+    beer.description = newDescription
+    console.log(beer.description)
 })
 }
+
 
 
 
