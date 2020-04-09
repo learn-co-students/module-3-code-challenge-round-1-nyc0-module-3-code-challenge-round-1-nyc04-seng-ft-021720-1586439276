@@ -13,17 +13,11 @@ document.addEventListener('DOMContentLoaded', function(){
 		.then(response => response.json())
 		.then(addArrayOfBeersToList);
 
-	
-
-
 });
 
 function addBeerToList(beer){
-
 	// scope ??
 	const listContainer = document.querySelector('#list-group');
-
-	// <li class="list-group-item">Beer title 1</li>
 
 	const newBeer = document.createElement('li');
 	newBeer.className = 'list-group-item';
@@ -40,25 +34,44 @@ function addArrayOfBeersToList(beerArray){
 }
 
 function loadBeerDetail(beerId){
-	
+	// scope ??
 	const detailContainer = document.querySelector('#beer-detail');
 
 	fetch(BEER_ENDPOINT + '/' + beerId)
 		.then(response => response.json())
 		.then(beer => {
+			
+			const nameEl = document.createElement('h1');
+			nameEl.append(beer.name);
+			
+			const imageEl = document.createElement('img');
+			imageEl.src = beer.image_url;
+			
+			const taglineEl = document.createElement('h3');
+			taglineEl.append(beer.tagline);
 
-			detailContainer.innerHTML = `
-			<h1>${beer.name}</h1>
-			<img src="${beer.image_url}">
-			<h3>${beer.tagline}</h3>
-			<textarea>${beer.description}</textarea>
-			<button id="edit-beer" class="btn btn-info" onclick="updateBeerDescription(${beer.id})">
-			Save
-			</button>
-			`;
+			const descriptionFieldEl = document.createElement('textarea');
+			descriptionFieldEl.value = beer.description;
+
+			const saveButtonEl = document.createElement('button');
+			saveButtonEl.id = 'edit-beer';
+			saveButtonEl.className = 'btn btn-info';
+			saveButtonEl.onclick = function(){ updateBeerDescription(beer.id); };
+			saveButtonEl.append('Save');
+
+			beerDetailContent = [nameEl, imageEl, taglineEl, descriptionFieldEl, saveButtonEl];
+
+			removeAllContentFromElement(detailContainer);
+			detailContainer.append(...beerDetailContent);
 
 		});
 
+}
+
+function removeAllContentFromElement(element){
+	while (element.firstChild) {
+		element.lastChild.remove();
+	}
 }
 
 function updateBeerDescription(beerId){
