@@ -11,7 +11,10 @@ document.addEventListener('DOMContentLoaded', function(){
 	// load initial beer list from server
 	fetch(BEER_ENDPOINT)
 		.then(response => response.json())
-		.then(addArrayOfBeersToList);
+		.then(beers => {
+			addArrayOfBeersToList(beers);
+			loadBeerDetail(beers[0].id);
+		});
 
 	// listen for clicks on the beer list
 	listContainer.addEventListener('click', event => {
