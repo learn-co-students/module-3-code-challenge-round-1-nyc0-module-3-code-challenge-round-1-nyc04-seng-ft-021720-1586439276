@@ -33,17 +33,15 @@ function addBeerName(beerInfo){
       Save
     </button>
         `
-        
-    })
-    /*
     //finds edit  button
-    let beerEditButton = li.querySelector(".btn btn-info")
+    let beerEditButton = document.querySelector(".btn")
     //adds event listener to edit/save button
+
     beerEditButton.addEventListener("click",() => {
         //changes the description on the server/backend
        // console.log(beerInfo.id)
-        let editText = li.querySelector("textarea")
-        console.log(editText)
+        let editText = document.querySelector("textarea")
+        //console.log(editText)
         fetch(`http://localhost:3000/beers/${beerInfo.id}`, {
             method: "PATCH",
             headers:
@@ -52,16 +50,36 @@ function addBeerName(beerInfo){
                 'Accept': 'application/json'
               },
             body: JSON.stringify({
+                
                 description: editText.value
             })
+        })
             .then(response => response.json())
             .then(newText => {
-                editText.innerHTML = newText
+                console.log(editText)
+                console.log(newText)
+                let editTextTwo = document.querySelector("textarea")
+                editTextTwo.innerText = newText.description
+                fetch(`http://localhost:3000/beers/${beerInfo.id}`)
+                .then(response => response.json())
+                .then(beerInfoTwo => {
+                console.log (beerInfoTwo)
+                updateDescription(beerInfoTwo)
                 })
-        })
+            })
     })
-*/
-
+    })
+}
+function updateDescription (beerInfoTwo){
+    beerDetailContainer.innerHTML = `
+    <h1>${beerInfoTwo.name}</h1>
+<img src="${beerInfoTwo.image_url}">
+<h3>${beerInfoTwo.tagline}</h3>
+<textarea>${beerInfoTwo.description}</textarea>
+<button id="edit-beer" class="btn btn-info">
+Save
+</button>
+  `
 }
 
 
