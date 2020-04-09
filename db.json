@@ -5,7 +5,7 @@
       "name": "Buzz",
       "tagline": "A Real Bitter Experience.",
       "first_brewed": "09/2007",
-      "description": "A light, crisp and bitter IPA brewed with English and American hops. A small batch brewed only once.",
+      "description": "does this still work?",
       "image_url": "https://images.punkapi.com/v2/keg.png",
       "food_pairing": [
         "Spicy chicken tikka masala",
@@ -20,7 +20,7 @@
       "name": "Berliner Weisse With Yuzu - B-Sides",
       "tagline": "Japanese Citrus Berliner Weisse.",
       "first_brewed": "11/2015",
-      "description": "Japanese citrus fruit intensifies the sour nature of this German classic.",
+      "description": "iurgiuhrehigoihergoerg[ohi'erghoigr",
       "image_url": "https://images.punkapi.com/v2/keg.png",
       "food_pairing": [
         "Smoked chicken wings",
@@ -151,21 +151,6 @@
       "contributed_by": "Sam Mason <samjbmason>"
     },
     {
-      "id": 12,
-      "name": "Movember",
-      "tagline": "Moustache-Worthy Beer.",
-      "first_brewed": "11/2009",
-      "description": "A deliciously robust, black malted beer with a decadent dark, dry cocoa flavour that provides an enticing backdrop to the Cascade hops.",
-      "image_url": "https://images.punkapi.com/v2/13.png",
-      "food_pairing": [
-        "Vegetable egg scramble",
-        "Margherita pizza",
-        "Fresh berry crisp tart"
-      ],
-      "brewers_tips": "If you can’t find really fresh cascade, substitute it for Amarillo or Ahtanum.",
-      "contributed_by": "Sam Mason <samjbmason>"
-    },
-    {
       "id": 13,
       "name": "Alpha Dog",
       "tagline": "Existential Red Ale.",
@@ -212,36 +197,6 @@
       "contributed_by": "Sam Mason <samjbmason>"
     },
     {
-      "id": 16,
-      "name": "AB:06",
-      "tagline": "Imperial Black IPA.",
-      "first_brewed": "04/2011",
-      "description": "Our sixth Abstrakt, this imperial black IPA combined dark malts with a monumental triple dry-hop, using an all-star team of some of our favourite American hops. Roasty and resinous.",
-      "image_url": "https://images.punkapi.com/v2/17.png",
-      "food_pairing": [
-        "Coffee dusted venison loin",
-        "Memphis-style beef short ribs",
-        "Chocolate orange brownies"
-      ],
-      "brewers_tips": "Boil down to desired OG (about 17 litres).",
-      "contributed_by": "Sam Mason <samjbmason>"
-    },
-    {
-      "id": 17,
-      "name": "Russian Doll – India Pale Ale",
-      "tagline": "Nesting Hop Bomb.",
-      "first_brewed": "08/2014",
-      "description": "The levels of hops vary throughout the range. We love hops, so all four beers are big, bitter badasses, but by tweaking the amount of each hop used later in the boil and during dry- hopping, we can balance the malty backbone with some unexpected flavours. Simcoe is used in the whirlpool for all four beers, and yet still lends different characters to each",
-      "image_url": "https://images.punkapi.com/v2/18.png",
-      "food_pairing": [
-        "Spicy chicken skewers",
-        "Fish tacos with hot sauce",
-        "Lemon pound cake with a ice sugar glaze"
-      ],
-      "brewers_tips": "Create balance through experimentation with the hop amounts and malt backbone.",
-      "contributed_by": "Sam Mason <samjbmason>"
-    },
-    {
       "id": 18,
       "name": "Hello My Name Is Mette-Marit",
       "tagline": "Lingonberry Double IPA.",
@@ -254,21 +209,6 @@
         "Krumkake with lingonberry jam"
       ],
       "brewers_tips": "Using crushed cranberries will dry out the beer further, drawing out their natural astringent character.",
-      "contributed_by": "Sam Mason <samjbmason>"
-    },
-    {
-      "id": 19,
-      "name": "Rabiator",
-      "tagline": "Imperial Wheat Beer",
-      "first_brewed": "03/2011",
-      "description": "Imperial Wheat beer / Weizenbock brewed by a homesick German in leather trousers. Think banana bread, bubble gum and David Hasselhoff.",
-      "image_url": "https://images.punkapi.com/v2/keg.png",
-      "food_pairing": [
-        "Grilled portabello mushroom burger",
-        "Chicken sausages with creamy mash",
-        "Caramel and banana meringue pie"
-      ],
-      "brewers_tips": "If you are struggling to get that authentic head retention increase your mash temperature to about 70°C.",
       "contributed_by": "Sam Mason <samjbmason>"
     },
     {
@@ -345,6 +285,13 @@
       ],
       "brewers_tips": "Make sure you have plenty of room in the fermenter. Beers containing wheat can often foam aggressively during fermentation.",
       "contributed_by": "Sam Mason <samjbmason>"
+    },
+    {
+      "name": "90 shilling",
+      "image_url": "https://www.odellbrewing.com/wp-content/uploads/2015/08/90_pint.jpg",
+      "tagline": "so many shillings",
+      "description": "can I still change this?",
+      "id": 28
     }
   ]
 }
