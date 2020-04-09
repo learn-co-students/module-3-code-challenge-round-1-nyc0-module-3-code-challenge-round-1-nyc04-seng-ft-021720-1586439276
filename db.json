@@ -5,7 +5,7 @@
       "name": "Buzz",
       "tagline": "A Real Bitter Experience.",
       "first_brewed": "09/2007",
-      "description": "idk something real weird",
+      "description": "does this still work?",
       "image_url": "https://images.punkapi.com/v2/keg.png",
       "food_pairing": [
         "Spicy chicken tikka masala",
@@ -287,12 +287,11 @@
       "contributed_by": "Sam Mason <samjbmason>"
     },
     {
-      "username": "example",
-      "id": 25
-    },
-    {
-      "username": "example",
-      "id": 26
+      "name": "90 shilling",
+      "image_url": "https://www.odellbrewing.com/wp-content/uploads/2015/08/90_pint.jpg",
+      "tagline": "so many shillings",
+      "description": "can I still change this?",
+      "id": 28
     }
   ]
 }

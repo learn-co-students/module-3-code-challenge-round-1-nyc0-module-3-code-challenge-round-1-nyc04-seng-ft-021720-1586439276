@@ -44,7 +44,7 @@ function renderDisplayBeer(beerObj){
     <h1>${beerObj.name}</h1>
     <img src=${beerObj.image_url}>
     <h3>${beerObj.tagline}</h3>
-    <textarea>${beerObj.description}</textarea>
+    <textarea id="description">${beerObj.description}</textarea>
     <button id="edit-beer" class="btn btn-info">
     Save
     </button>
@@ -61,7 +61,8 @@ function renderDisplayBeer(beerObj){
 beerDisplayTab.addEventListener("click", function(e){
     e.preventDefault()
     let parentDiv = e.target.closest('div')
-    let description = parentDiv.querySelector('textarea').value
+    let description = parentDiv.querySelector('#description').value
+    
     if (e.target.id === "edit-beer"){
         fetch(`http://localhost:3000/beers/${parentDiv.id}`, {
         method: 'PATCH', 
@@ -86,50 +87,61 @@ beerDisplayTab.addEventListener("click", function(e){
     },
     parentDiv.innerHTML = ""
     )} 
-    // else if (e.target.id ==="add-new-beer"){
-    //     // renderNewBeerForm()
-    // }
+    else if (e.target.id ==="add-new-beer"){
+        renderNewBeerForm()
+    }
 })
 
-// function renderNewBeerForm(){
-//     beerDisplayTab.innerHTML = ""
-//     let displayDiv = document.createElement('div')
+function renderNewBeerForm(){
+    beerDisplayTab.innerHTML = ""
+    let displayDiv = document.createElement('div')
+
     
-//     displayDiv.innerHTML = `
-//     <input type="text" id="name">Name</input>
-//     <input type="text" id="img_url">Image Link</input>
-//     <input type="text" id="tagline">Tagline</input>
-//     <input type="text" id="description">Name</input>
-//     <button id="add-beer" class="btn btn-primary">
-//     Save this beer!
-//     </button>
-//     `
+    displayDiv.innerHTML = `
+    <form id=add-new-beer-form>
+    <input type="text" id="name">Name</input>
+    <input type="text" id="image_url">Image Link</input>
+    <input type="text" id="tagline">Tagline</input>
+    <input type="textarea" id="description">Description</input>
+    <button type="submit" id="submit" class="btn btn-primary">
+    Add this beer!
+    </button>
+    </form>
+    `
     
-//     beerDisplayTab.append(displayDiv)
+    beerDisplayTab.append(displayDiv)
+    let form = displayDiv.querySelector('#add-new-beer-form')
+    form.addEventListener("click", function(e){
+    e.preventDefault
 
-//     displayDiv.addEventListener("submit", function(e){
-//     e.preventDefault
+    
+    let name = form.name.value
+    let image_url = form.image_url.value
+    let tagline = form.tagline.value
+    let description = form.description.value
+    
+        if (e.target.id ==="submit"){
+        fetch('http://localhost:3000/beers', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name,
+            image_url,
+            tagline,
+            description
+        }),
+        })
+        .then((response) => response.json())
+        .then((beerObj) => {
+        console.log('Success:', beerObj);
+        renderDisplayBeer(beerObj)
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
+    }
+    })
 
-//     let name = e.target.name.value
-//     console.log(name)
-
-//     const data = { username: 'example' };
-
-//         fetch('http://localhost:3000/beers', {
-//         method: 'POST', 
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(data),
-//         })
-//         .then((response) => response.json())
-//         .then((data) => {
-//         console.log('Success:', data);
-//         })
-//         .catch((error) => {
-//         console.error('Error:', error);
-//         });
-
-    // })
-
-// }
+}
