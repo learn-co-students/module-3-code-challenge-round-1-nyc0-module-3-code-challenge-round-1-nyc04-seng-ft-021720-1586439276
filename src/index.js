@@ -24,15 +24,11 @@ function addBeerName(beerInfo){
     let beerNameButtonContainer = li.querySelector(".list-group-item")
     //event listener to change detail page to match the beer
     beerNameButtonContainer.addEventListener("click", () => {
-        beerDetailContainer.innerHTML = `
-          <h1>${beerInfo.name}</h1>
-    <img src="${beerInfo.image_url}">
-    <h3>${beerInfo.tagline}</h3>
-    <textarea>${beerInfo.description}</textarea>
-    <button id="edit-beer" class="btn btn-info">
-      Save
-    </button>
-        `
+        fetch(`http://localhost:3000/beers/${beerInfo.id}`)
+                .then(response => response.json())
+                .then(beerInfoTwo => {
+                console.log (beerInfoTwo)
+                updateDescription(beerInfoTwo)
     //finds edit  button
     let beerEditButton = document.querySelector(".btn")
     //adds event listener to edit/save button
@@ -60,11 +56,7 @@ function addBeerName(beerInfo){
                 console.log(newText)
                 let editTextTwo = document.querySelector("textarea")
                 editTextTwo.innerText = newText.description
-                fetch(`http://localhost:3000/beers/${beerInfo.id}`)
-                .then(response => response.json())
-                .then(beerInfoTwo => {
-                console.log (beerInfoTwo)
-                updateDescription(beerInfoTwo)
+
                 })
             })
     })
