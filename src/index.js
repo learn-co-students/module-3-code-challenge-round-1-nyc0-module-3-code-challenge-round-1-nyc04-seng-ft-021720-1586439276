@@ -9,7 +9,6 @@ fetch(BASE_URL)
 const beerList = document.querySelector('#list-group')
 const beerDiv = document.querySelector('#beer-detail')
 const beerDetail = document.querySelector('#beer-detail')
-beerDetail.style.position = "fixed";
 
 const beerHeader = document.querySelector('h2')
 beerHeader.style.textShadow = "2px 2px indianred"
