@@ -22,12 +22,22 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	// listen for clicks on the save button
 	detailContainer.addEventListener('click', event =>{
-		if (event.target.id === 'edit-beer'){
+		if (
+			event.target.id === 'edit-beer' &&
+			!event.target.classList.contains('disabled')
+		){
 			updateBeerDescription(event.target.dataset.id);
 		}
 	});
-
+	
 	// BONUS: disable save button until edited
+	detailContainer.addEventListener('input', event => {
+		if (event.target.id === 'beer-description'){
+			const editButton = detailContainer.querySelector('#edit-beer');
+			editButton.classList.remove('disabled');
+			editButton.textContent = 'Save changes';
+		}
+	});
 
 	// BONUS: listen for .blur on the textarea
 
@@ -71,12 +81,13 @@ function loadBeerDetail(beerId){
 
 			const descriptionFieldEl = document.createElement('textarea');
 			descriptionFieldEl.value = beer.description;
+			descriptionFieldEl.id = 'beer-description';
 
 			const saveButtonEl = document.createElement('button');
 			saveButtonEl.id = 'edit-beer';
-			saveButtonEl.className = 'btn btn-info';
+			saveButtonEl.className = 'btn btn-info disabled';
 			saveButtonEl.dataset.id = beer.id;
-			saveButtonEl.append('Save');
+			saveButtonEl.append('Description is editable');
 
 			beerDetailContent = [nameEl, imageEl, taglineEl, descriptionFieldEl, saveButtonEl];
 
@@ -95,10 +106,15 @@ function removeAllContentFromElement(element){
 
 function updateBeerDescription(beerId){
 
-	console.log('saving...');
+	const detailContainer = document.querySelector('#beer-detail');
 
 	const descriptionField = document.querySelector('textarea');
 	const newDescription = descriptionField.value;
+
+	const editButton = detailContainer.querySelector('#edit-beer');
+	editButton.textContent = 'Saving...';
+	editButton.blur();
+	editButton.classList.add('disabled');
 	
 	// update the server
 	fetch(BEER_ENDPOINT + '/' + beerId, {
@@ -111,7 +127,10 @@ function updateBeerDescription(beerId){
 	})
 		.then(response => {
 			if (response.ok) {
-				console.log('saved.');
+				const editButton = detailContainer.querySelector('#edit-beer');
+				setTimeout(function(){
+					editButton.textContent = 'Saved.';
+				}, 700);
 			}
 		})
 }
